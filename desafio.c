@@ -1,57 +1,74 @@
 #include <stdio.h>
 
-int main(){
+// Função do menu
+void menu() {
+    printf("Selecione uma opção:\n");
+    printf("1 - Movimento Bispo\n");
+    printf("2 - Movimento Rainha\n");
+    printf("3 - Movimento Torre\n");
+    printf("4 - Movimento Cavalo\n");
+    printf("Digite '0' para sair.\n\n");
+}
 
-    //Movimento to Bispo cinco casas na diagonal para cima e à direita
-    printf("###  Movimento Bispo  ### \n\n");
-    int bispo = 1;
-
-    while (bispo <= 5)
-    {
-        printf("Mova %d Para Cima, Mova %d Para a Direita \n", bispo, bispo);
-        bispo++;
+// Funções separadas para os movimentos
+void movimento_bispo() {
+    for (int i = 1; i <= 2; i++) {
+        printf("Mova Para Cima, \n");
     }
+    printf("Mova Para a Direita\n");
+}
 
-    printf("\n");
-
-    //Movimento Rainha 8 casas para a esqueda
-    printf("###  Movimento Rainha  ### \n");
-    int rainha = 1;
-
-    do
-    {
-    printf("Mova %d Para a Esquerda \n", rainha);
-    rainha++;
-    } while (rainha <= 8);
-
-    printf("\n");
-    
-
-    //Movimento Torre 5 casas para frente
-    printf("###  Movimento Torre  ### \n");
-    int torre;
-
-    for (torre = 1; torre <= 5; torre++)
-    {
-    printf("Mova %d Para Frente \n", torre);
+void movimento_rainha() {
+    for (int i = 1; i <= 8; i++) {
+        printf("Mova %d Para a Esquerda\n", i);
     }
-    
-    printf("\n");
-        //Utilização de um Loop aninhado para a resolução do exercicio
-    printf("###  Movimento Cavalo  ### \n");
-    int esquerda = 1;
+}
 
-    while (esquerda--)
-    {
-        for (int i = 0; i < 2; i++)
-        {
-            printf("Mova para Baixo \n");
+void movimento_torre() {
+    for (int i = 1; i <= 5; i++) {
+        printf("Mova %d Para Frente\n", i);
+    }
+}
+
+void movimento_cavalo() {
+    for (int i = 0; i < 2; i++) {
+        printf("Mova para Cima\n");
+    }
+    printf("Mova para direita\n");
+}
+
+int main() {
+    int opcao;
+
+    do {
+        menu();
+        printf("Digite a sua opção: ");
+        scanf("%d", &opcao);
+        printf("\n");
+
+        switch (opcao) {
+            case 1:
+                movimento_bispo();
+                break;
+            case 2:
+                movimento_rainha();
+                break;
+            case 3:
+                movimento_torre();
+                break;
+            case 4:
+                movimento_cavalo();
+                break;
+            case 0:
+                printf("Saindo do programa...\n");
+                break;
+            default:
+                printf("Opção inválida, tente novamente.\n");
         }
-        printf("Mova para esquerda \n");
-        
-    }
-    
 
+        printf("\n"); // quebra de linha após cada execução
+
+    } while (opcao != 0);
 
     return 0;
 }
